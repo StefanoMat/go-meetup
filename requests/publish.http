@@ -1,0 +1,9 @@
+POST http://localhost:8080/publish
+
+Content-Type: application/json
+
+{
+  "body": "teste http message"
+}
+
+
