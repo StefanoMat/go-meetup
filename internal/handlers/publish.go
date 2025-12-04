@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"go-meetup-payment/models"
-	"go-meetup-payment/queue"
+	"go-meetup-payment/internal/domain"
+	"go-meetup-payment/internal/queue"
 )
 
 // NewPublishHandler registra o endpoint HTTP responsável por enfileirar mensagens.
@@ -15,7 +15,7 @@ import (
 func NewPublishHandler(q *queue.Queue) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("POST /publish", func(w http.ResponseWriter, r *http.Request) {
-		var m models.Message
+		var m domain.Message
 		// Decodifica o corpo JSON da requisição para o struct Message.
 		if err := json.NewDecoder(r.Body).Decode(&m); err != nil {
 			http.Error(w, err.Error(), http.StatusBadRequest)

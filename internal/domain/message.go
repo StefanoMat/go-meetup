@@ -1,4 +1,4 @@
-package models
+package domain
 
 // Message representa o payload recebido via HTTP.
 // O campo Body é populado a partir do JSON {"body":"..."}.

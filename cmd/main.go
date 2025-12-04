@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"net/http"
 
-	"go-meetup-payment/handlers"
-	"go-meetup-payment/queue"
+	"go-meetup-payment/internal/handlers"
+	"go-meetup-payment/internal/queue"
 )
 
 // main inicializa a fila, cria workers concorrentes e sobe o servidor HTTP.
 func main() {
+
 	// Cria a fila compartilhada entre produtores (HTTP) e consumidores (workers).
 	q := queue.NewQueue()
 	// Inicia 3 workers; todos leem do mesmo channel (concorrência).
